@@ -28,7 +28,7 @@ const seed: EventItem[] = [
   { id: 'EVT-2047', service: 'Auth Service', message: 'Token refresh retries above baseline', severity: 'Warning', status: 'Acknowledged', time: '2 min ago', latency: 312 },
   { id: 'EVT-2046', service: 'Payments', message: 'Payment processor timeout recovered', severity: 'Critical', status: 'Resolved', time: '6 min ago', latency: 1250 },
   { id: 'EVT-2045', service: 'Search Index', message: 'Index synchronization completed', severity: 'Info', status: 'Resolved', time: '9 min ago', latency: 86 },
-  { id: 'EVT-2044', service: 'Notification WoAKer', message: 'Queue depth approaching threshold', severity: 'Warning', status: 'Investigating', time: '12 min ago', latency: 266 },
+  { id: 'EVT-2044', service: 'Notification Worker', message: 'Queue depth approaching threshold', severity: 'Warning', status: 'Investigating', time: '12 min ago', latency: 266 },
   { id: 'EVT-2043', service: 'API Gateway', message: 'Health check passed in all regions', severity: 'Info', status: 'Resolved', time: '15 min ago', latency: 104 },
   { id: 'EVT-2042', service: 'Media Service', message: 'Transient upstream connection failure', severity: 'Critical', status: 'Acknowledged', time: '18 min ago', latency: 890 },
   { id: 'EVT-2041', service: 'Auth Service', message: 'Login success rate returned to normal', severity: 'Info', status: 'Resolved', time: '23 min ago', latency: 118 },
@@ -74,7 +74,7 @@ export default function App() {
   const [notice, setNotice] = useState('');
   const [mobile, setMobile] = useState(false);
   const [nav, setNav] = useState<NavPage>('Overview');
-  const [openMenu, setOpenMenu] = useState<'woAKspace' | 'profile' | 'time' | 'system' | null>(null);
+  const [openMenu, setOpenMenu] = useState<'workspace' | 'profile' | 'time' | 'system' | null>(null);
   const [timeRange, setTimeRange] = useState('Last 60 min');
   const [compactMode, setCompactMode] = useState(false);
   const [showResolved, setShowResolved] = useState(true);
@@ -87,7 +87,7 @@ export default function App() {
         ['API Gateway', 'Request latency sample received', 'Info', 120],
         ['Auth Service', 'Authentication health check completed', 'Info', 95],
         ['Payments', 'Retry rate crossed warning threshold', 'Warning', 640],
-        ['Notification WoAKer', 'Queue processing delay detected', 'Warning', 410],
+        ['Notification Worker', 'Queue processing delay detected', 'Warning', 410],
         ['Search Index', 'Index woAKer heartbeat received', 'Info', 80],
       ] as const;
 
@@ -220,25 +220,25 @@ function updateEvent(event: EventItem, next: Status) {
 
         <div className="menu-anchor">
           <button
-            className="woAKspace"
-            aria-expanded={openMenu === 'woAKspace'}
-            onClick={() => setOpenMenu(openMenu === 'woAKspace' ? null : 'woAKspace')}
+            className="workspace"
+            aria-expanded={openMenu === 'workspace'}
+            onClick={() => setOpenMenu(openMenu === 'workspace' ? null : 'workspace')}
           >
-            <span className="woAKspace-icon">A</span>
-            <span><b>Acme Systems</b><small>Starter woAKspace</small></span>
+            <span className="workspace-icon">A</span>
+            <span><b>Acme Systems</b><small>Starter workspace</small></span>
             <ChevronDown size={15} />
           </button>
 
-          {openMenu === 'woAKspace' && (
+          {openMenu === 'workspace' && (
             <div className="popup-menu">
-              <b className="popup-title">Your woAKspaces</b>
-              <button className="popup-option selected" onClick={() => { setNotice('Acme Systems woAKspace selected.'); setOpenMenu(null); }}>
-                <span className="woAKspace-icon small-icon">A</span>
-                <span>Acme Systems<small>Current woAKspace</small></span>
+              <b className="popup-title">Your workspaces</b>
+              <button className="popup-option selected" onClick={() => { setNotice('Acme Systems workspace selected.'); setOpenMenu(null); }}>
+                <span className="workspace-icon small-icon">A</span>
+                <span>Acme Systems<small>Current workspace</small></span>
                 <Check size={14} />
               </button>
-              <button className="popup-option" onClick={() => { setNotice('This demo includes one woAKspace.'); setOpenMenu(null); }}>
-                ＋ <span>Create woAKspace<small>Not available in this demo</small></span>
+              <button className="popup-option" onClick={() => { setNotice('This demo includes one workspace.'); setOpenMenu(null); }}>
+                ＋ <span>Create workspace<small>Not available in this demo</small></span>
               </button>
             </div>
           )}
