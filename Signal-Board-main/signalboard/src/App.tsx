@@ -28,7 +28,7 @@ const seed: EventItem[] = [
   { id: 'EVT-2047', service: 'Auth Service', message: 'Token refresh retries above baseline', severity: 'Warning', status: 'Acknowledged', time: '2 min ago', latency: 312 },
   { id: 'EVT-2046', service: 'Payments', message: 'Payment processor timeout recovered', severity: 'Critical', status: 'Resolved', time: '6 min ago', latency: 1250 },
   { id: 'EVT-2045', service: 'Search Index', message: 'Index synchronization completed', severity: 'Info', status: 'Resolved', time: '9 min ago', latency: 86 },
-  { id: 'EVT-2044', service: 'Notification Worker', message: 'Queue depth approaching threshold', severity: 'Warning', status: 'Investigating', time: '12 min ago', latency: 266 },
+  { id: 'EVT-2044', service: 'Notification WoAKer', message: 'Queue depth approaching threshold', severity: 'Warning', status: 'Investigating', time: '12 min ago', latency: 266 },
   { id: 'EVT-2043', service: 'API Gateway', message: 'Health check passed in all regions', severity: 'Info', status: 'Resolved', time: '15 min ago', latency: 104 },
   { id: 'EVT-2042', service: 'Media Service', message: 'Transient upstream connection failure', severity: 'Critical', status: 'Acknowledged', time: '18 min ago', latency: 890 },
   { id: 'EVT-2041', service: 'Auth Service', message: 'Login success rate returned to normal', severity: 'Info', status: 'Resolved', time: '23 min ago', latency: 118 },
@@ -74,7 +74,7 @@ export default function App() {
   const [notice, setNotice] = useState('');
   const [mobile, setMobile] = useState(false);
   const [nav, setNav] = useState<NavPage>('Overview');
-  const [openMenu, setOpenMenu] = useState<'workspace' | 'profile' | 'time' | 'system' | null>(null);
+  const [openMenu, setOpenMenu] = useState<'woAKspace' | 'profile' | 'time' | 'system' | null>(null);
   const [timeRange, setTimeRange] = useState('Last 60 min');
   const [compactMode, setCompactMode] = useState(false);
   const [showResolved, setShowResolved] = useState(true);
@@ -87,8 +87,8 @@ export default function App() {
         ['API Gateway', 'Request latency sample received', 'Info', 120],
         ['Auth Service', 'Authentication health check completed', 'Info', 95],
         ['Payments', 'Retry rate crossed warning threshold', 'Warning', 640],
-        ['Notification Worker', 'Queue processing delay detected', 'Warning', 410],
-        ['Search Index', 'Index worker heartbeat received', 'Info', 80],
+        ['Notification WoAKer', 'Queue processing delay detected', 'Warning', 410],
+        ['Search Index', 'Index woAKer heartbeat received', 'Info', 80],
       ] as const;
 
       const sample = choices[Math.floor(Math.random() * choices.length)];
@@ -168,7 +168,7 @@ function updateEvent(event: EventItem, next: Status) {
     )
   );
 
-  setNotice(`${event.id} marked ${next.toLowerCase()}.`);
+  setNotice(`${event.id} maAKed ${next.toLowerCase()}.`);
 }
 
 
@@ -216,29 +216,29 @@ function updateEvent(event: EventItem, next: Status) {
           <span>signal<span className="muted-brand">board</span><small>OPERATIONS CLOUD</small></span>
         </a>
 
-        <div className="eyebrow side-label">WORKSPACE</div>
+        <div className="eyebrow side-label">WOAKSPACE</div>
 
         <div className="menu-anchor">
           <button
-            className="workspace"
-            aria-expanded={openMenu === 'workspace'}
-            onClick={() => setOpenMenu(openMenu === 'workspace' ? null : 'workspace')}
+            className="woAKspace"
+            aria-expanded={openMenu === 'woAKspace'}
+            onClick={() => setOpenMenu(openMenu === 'woAKspace' ? null : 'woAKspace')}
           >
-            <span className="workspace-icon">A</span>
-            <span><b>Acme Systems</b><small>Starter workspace</small></span>
+            <span className="woAKspace-icon">A</span>
+            <span><b>Acme Systems</b><small>Starter woAKspace</small></span>
             <ChevronDown size={15} />
           </button>
 
-          {openMenu === 'workspace' && (
+          {openMenu === 'woAKspace' && (
             <div className="popup-menu">
-              <b className="popup-title">Your workspaces</b>
-              <button className="popup-option selected" onClick={() => { setNotice('Acme Systems workspace selected.'); setOpenMenu(null); }}>
-                <span className="workspace-icon small-icon">A</span>
-                <span>Acme Systems<small>Current workspace</small></span>
+              <b className="popup-title">Your woAKspaces</b>
+              <button className="popup-option selected" onClick={() => { setNotice('Acme Systems woAKspace selected.'); setOpenMenu(null); }}>
+                <span className="woAKspace-icon small-icon">A</span>
+                <span>Acme Systems<small>Current woAKspace</small></span>
                 <Check size={14} />
               </button>
-              <button className="popup-option" onClick={() => { setNotice('This demo includes one workspace.'); setOpenMenu(null); }}>
-                ＋ <span>Create workspace<small>Not available in this demo</small></span>
+              <button className="popup-option" onClick={() => { setNotice('This demo includes one woAKspace.'); setOpenMenu(null); }}>
+                ＋ <span>Create woAKspace<small>Not available in this demo</small></span>
               </button>
             </div>
           )}
@@ -263,8 +263,8 @@ function updateEvent(event: EventItem, next: Status) {
           </div>
 
           <div className="profile">
-            <span className="avatar">RK</span>
-            <span><b>Ratan Kalke</b><small>Frontend Engineer · Demo</small></span>
+            <span className="avatar">AK</span>
+            <span><b>Atharva Khadye</b><small>Frontend Engineer · Demo</small></span>
             <button className="icon-btn" aria-label="Open profile menu" onClick={() => setOpenMenu(openMenu === 'profile' ? null : 'profile')}>
               <MoreHorizontal size={17} />
             </button>
@@ -274,8 +274,8 @@ function updateEvent(event: EventItem, next: Status) {
             <div className="popup-menu profile-menu">
               <b className="popup-title">Demo profile</b>
               <div className="profile-summary">
-                <span className="avatar">RK</span>
-                <span><b>Ratan Kalke</b><small>Frontend Engineer · Demo</small></span>
+                <span className="avatar">AK</span>
+                <span><b>Atharva Khadye</b><small>Frontend Engineer · Demo</small></span>
               </div>
               <button className="popup-option" onClick={() => { goTo('Settings'); setNotice('Opened demo settings.'); }}>
                 <Settings2 size={15} /> Settings
@@ -294,7 +294,7 @@ function updateEvent(event: EventItem, next: Status) {
             <Menu size={19} />
           </button>
 
-          <div className="crumb">Workspace <span>/</span> <b>{nav}</b></div>
+          <div className="crumb">WoAKspace <span>/</span> <b>{nav}</b></div>
 
           <div className="top-actions">
             <div className="menu-anchor">
@@ -321,7 +321,7 @@ function updateEvent(event: EventItem, next: Status) {
             <button className="icon-btn" aria-label="Notifications" onClick={() => goTo('Alerts')}>
               <Bell size={18} />
             </button>
-            <span className="avatar">RK</span>
+            <span className="avatar">AK</span>
           </div>
         </header>
 
@@ -329,7 +329,7 @@ function updateEvent(event: EventItem, next: Status) {
           <div className="heading">
             <div>
               <div className="eyebrow"><span className="eyeline" /> LIVE OPERATIONS OVERVIEW</div>
-              <h1>{nav === 'Overview' ? 'Good evening, Ratan' : nav}</h1>
+              <h1>{nav === 'Overview' ? 'Good evening, Atharva' : nav}</h1>
               <p>{pageDescription(nav)}</p>
             </div>
 
@@ -491,7 +491,7 @@ function updateEvent(event: EventItem, next: Status) {
 
           {nav === 'Settings' && (
             <section className="panel full-page-panel settings-panel">
-              <div className="section-intro"><div><h2>Workspace settings</h2><p>Change how this demo dashboard behaves in your browser.</p></div><SlidersHorizontal size={20} /></div>
+              <div className="section-intro"><div><h2>WoAKspace settings</h2><p>Change how this demo dashboard behaves in your browser.</p></div><SlidersHorizontal size={20} /></div>
 
               <div className="settings-row">
                 <div><b>Simulated event stream</b><p>Generate a new example event approximately every eight seconds.</p></div>
